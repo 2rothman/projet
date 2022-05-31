@@ -3,6 +3,7 @@ serial.onDataReceived(serial.delimiters(Delimiters.Comma), function () {
     conversion = parseFloat(message)
     if (conversion == 0) {
         Start = false
+        basic.showIcon(IconNames.No)
         pins.digitalWritePin(DigitalPin.P13, 0)
         pins.digitalWritePin(DigitalPin.P14, 0)
         pins.digitalWritePin(DigitalPin.P15, 0)
@@ -15,6 +16,7 @@ serial.onDataReceived(serial.delimiters(Delimiters.Comma), function () {
         serial.writeLine("*SV50*")
     } else if (conversion == 9) {
         Start = true
+        basic.showIcon(IconNames.Heart)
         if (recul == false) {
             pins.digitalWritePin(DigitalPin.P13, 1)
             pins.digitalWritePin(DigitalPin.P14, 0)
@@ -106,6 +108,8 @@ SerialPin.P8,
 BaudRate.BaudRate9600
 )
 basic.clearScreen()
+basic.showString("Bonjour Lille !")
+basic.showIcon(IconNames.No)
 basic.forever(function () {
 	
 })
